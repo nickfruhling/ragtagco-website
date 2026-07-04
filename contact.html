@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Nick | Rag Tag Co.</title>
+<meta name="description" content="If you have questions or want to make suggestions for future sticker packs, please give me a shout on social for the fastest response.">
+<link rel="icon" href="images/rag-tag-logo-favicon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/"><img src="images/rag-tag-logo-animation-2x.gif" alt="Rag Tag Co."></a>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="page wrap">
+  <h1>Contact Nick</h1>
+  <p class="lede">I'm just one guy making stickers, but I'm here to help!</p>
+  <p>If you have questions or want to make suggestions for future sticker packs, please give me a shout on social for the fastest response.</p>
+
+  <!--
+    FORMSPREE SETUP:
+    1. Create a free account at https://formspree.io
+    2. Create a new form, copy the endpoint it gives you
+       (looks like https://formspree.io/f/xxxxabcd)
+    3. Replace YOUR_FORM_ID below with that ID
+  -->
+  <form class="contact-form" action="https://formspree.io/f/xjgqjewz" method="POST" id="contactForm">
+    <div>
+      <label for="name">Name (required)</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+      <label for="email">Email (required)</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="message">Message (required)</label>
+      <textarea id="message" name="message" required></textarea>
+    </div>
+    <button class="btn" type="submit">Submit</button>
+  </form>
+  <p class="confirm-banner" id="confirmBanner">Thank you for your response. ✨</p>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; Copyright <span id="year"></span> <a href="/">Rag Tag Co.</a></span>
+    <nav>
+      <ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('contactForm');
+  const banner = document.getElementById('confirmBanner');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        banner.style.display = 'block';
+      } else {
+        alert('Something went wrong sending your message — please email directly instead.');
+      }
+    } catch (err) {
+      alert('Something went wrong sending your message — please email directly instead.');
+    }
+  });
+</script>
+</body>
+</html>
