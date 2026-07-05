@@ -1,3 +1,6 @@
+/* Self-hosted display font used on the original site.
+   Grab Nevis-Bold.ttf.woff (+ .svg/.eot) from
+   https://www.ragtagco.com/fonts/ and drop into a /fonts folder here. */
 @font-face {
   font-family: 'Nevis-Bold';
   src: url('../fonts/Nevis-Bold.ttf.woff') format('woff'),
@@ -56,6 +59,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: 0 24px;
 }
 
+/* Header — white strip, logo left, nav right, like the original #header */
 header.site-header {
   background: var(--paper);
   padding: 32px 0;
@@ -92,92 +96,108 @@ nav.site-nav a {
 
 nav.site-nav a:hover { color: var(--ink); }
 
-/* Hero */
-.hero {
+/* Page header — same white strip as the nav, sits directly above the bands */
+.page-header {
+  background: var(--paper);
   text-align: center;
-  padding: 56px 0 24px;
+  padding: 0 0 40px;
 }
 
-.hero h1 {
+.page-header h1 {
   font-family: var(--font-display);
   font-weight: normal;
   font-size: clamp(2.25rem, 6vw, 48px);
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
   margin: 0 0 8px;
   color: var(--ink);
 }
 
-.hero p.tag {
-  color: var(--ink-soft);
+.page-header .tag {
+  color: var(--link);
   font-size: 26px;
   letter-spacing: -1px;
   margin: 0;
 }
 
-.pack {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 32px;
-  align-items: center;
-  padding: 48px 32px;
-  margin: 24px 0;
-  border-radius: var(--radius);
-  color: #fff;
+/* Portfolio bands — full-bleed color, alternating image side, matches the
+   original theme's zilla-media-left / zilla-media-right layout exactly */
+.band {
+  width: 100%;
+  padding: 60px 0;
 }
 
-.pack.pack-classic   { background: var(--pack-orange); }
-.pack.pack-spookyish { background: var(--pack-yellow); }
-.pack.pack-christmassy { background: var(--pack-cyan); }
+.band-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
 
-.pack img {
+.band.media-right .band-inner { flex-direction: row-reverse; }
+
+.band-media { flex: 0 0 56%; }
+
+.band-media img {
   width: 100%;
-  border-radius: var(--radius);
   display: block;
 }
 
-.pack h2 {
+.band-content { flex: 1 1 auto; max-width: 320px; }
+
+.band-content h2 {
   font-family: var(--font-display);
   font-weight: normal;
-  margin: 0 0 4px;
-  font-size: 32px;
+  font-size: clamp(1.75rem, 4vw, 48px);
   letter-spacing: -0.03em;
-  color: #fff;
+  line-height: 1;
+  margin: 0 0 6px;
 }
 
-.pack .pack-tagline {
-  color: rgba(255,255,255,0.85);
-  font-weight: bold;
-  margin: 0 0 10px;
+.band-content .entry-tagline {
   font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 14px;
 }
 
-.pack p.desc {
-  color: rgba(255,255,255,0.95);
-  margin: 0 0 16px;
-}
+.band-content p.desc { margin: 0 0 20px; }
 
-.pack a.btn {
+.band-content a.more-link {
   display: inline-block;
-  background: #232527;
-  color: #fff;
   padding: 8px 18px;
   border-radius: var(--radius);
   font-weight: bold;
   font-size: 14px;
 }
 
-.pack a.btn:hover { background: var(--ink); color: #fff; }
+/* Classic pack — zilla-dark: colored bg, white text, white/blue button */
+.band.dark { background: var(--pack-orange); color: #fff; }
+.band.dark .entry-tagline { color: #fff; opacity: 0.6; }
+.band.dark p.desc { color: rgba(255,255,255,0.95); }
+.band.dark a.more-link { background: #fff; color: var(--link); }
+.band.dark a.more-link:hover { background: var(--accent); color: #fff; }
 
-@media (max-width: 600px) {
-  .pack {
-    grid-template-columns: 1fr;
+/* Spookyish / Christmassy — zilla-light: colored bg, dark text, dark button */
+.band.light { color: #232527; }
+.band.light.color-yellow { background: var(--pack-yellow); }
+.band.light.color-cyan { background: var(--pack-cyan); }
+.band.light .entry-tagline { color: #000; opacity: 0.4; }
+.band.light p.desc { color: #232527; }
+.band.light a.more-link { background: #232527; color: #fff; }
+.band.light a.more-link:hover { background: var(--accent); color: #fff; }
+
+@media (max-width: 700px) {
+  .band-inner, .band.media-right .band-inner {
+    flex-direction: column;
     text-align: center;
-    padding: 32px 20px;
   }
-  .pack img { max-width: 260px; margin: 0 auto; }
+  .band-media { flex: 0 0 auto; max-width: 320px; }
+  .band-content { max-width: 100%; }
 }
 
+/* Simple content pages (privacy, contact) */
 .page {
   background: var(--paper);
   padding: 48px 0 64px;
@@ -286,6 +306,7 @@ form.contact-form button:hover {
 
 .social-row a { font-weight: bold; }
 
+/* Footer — white strip like the original */
 footer.site-footer {
   background: var(--paper);
   padding: 40px 0;
