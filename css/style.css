@@ -173,12 +173,12 @@ nav.site-nav a:hover { color: var(--ink); }
 .band.dark a.more-link { background: #fff; color: var(--link); }
 .band.dark a.more-link:hover { background: var(--accent); color: #fff; }
 
-.band.light { color: #232527; }
+.band.light { color: var(--link); }
 .band.light.color-yellow { background: var(--pack-yellow); }
 .band.light.color-cyan { background: var(--pack-cyan); }
-.band.light .entry-tagline { color: #000; opacity: 0.4; }
-.band.light p.desc { color: #232527; }
-.band.light a.more-link { background: #232527; color: #fff; }
+.band.light .entry-tagline { color: var(--link); opacity: 0.6; }
+.band.light p.desc { color: var(--link); }
+.band.light a.more-link { background: var(--link); color: #fff; }
 .band.light a.more-link:hover { background: var(--accent); color: #fff; }
 
 @media (max-width: 700px) {
