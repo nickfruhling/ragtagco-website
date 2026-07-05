@@ -28,13 +28,20 @@
 
 html { scroll-behavior: smooth; }
 
+html, body { height: 100%; }
+
 body {
   margin: 0;
   background: var(--body-bg);
-  color: var(--ink);
+  color: var(--link);
   font: 16px/1.5 var(--font-body);
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
+main { flex: 1 0 auto; }
 
 a {
   color: var(--link);
@@ -86,11 +93,11 @@ nav.site-nav ul {
 }
 
 nav.site-nav a {
-  color: var(--ink-soft);
+  color: var(--link);
   font-weight: normal;
 }
 
-nav.site-nav a:hover { color: var(--ink); }
+nav.site-nav a:hover { color: var(--accent); }
 
 .page-header {
   background: var(--paper);
@@ -191,7 +198,9 @@ nav.site-nav a:hover { color: var(--ink); }
 }
 
 .page {
-  padding: 48px 0 64px;
+  padding-top: 48px;
+  padding-bottom: 64px;
+  color: var(--link);
 }
 
 .page h1 {
@@ -201,11 +210,11 @@ nav.site-nav a:hover { color: var(--ink); }
   letter-spacing: -0.04em;
   line-height: 0.9;
   margin-bottom: 6px;
-  color: var(--ink);
+  color: var(--link);
 }
 
 .page .lede {
-  color: var(--ink-soft);
+  color: var(--link);
   font-size: 26px;
   letter-spacing: -1px;
   margin-top: 0;
@@ -215,10 +224,10 @@ nav.site-nav a:hover { color: var(--ink); }
   margin-top: 32px;
   font-size: 18px;
   font-weight: bold;
-  color: var(--ink);
+  color: var(--link);
 }
 
-.page p { margin: 0 0 20px; color: var(--ink); }
+.page p { margin: 0 0 20px; color: var(--link); }
 
 form.contact-form {
   margin-top: 28px;
@@ -307,7 +316,7 @@ footer.site-footer .wrap {
   flex-wrap: wrap;
   gap: 12px;
   font-size: 14px;
-  color: var(--ink-soft);
+  color: var(--link);
 }
 
 footer.site-footer nav ul {
@@ -319,8 +328,8 @@ footer.site-footer nav ul {
 }
 
 footer.site-footer a {
-  color: var(--ink-soft);
+  color: var(--link);
   font-weight: bold;
 }
 
-footer.site-footer a:hover { color: var(--ink); }
+footer.site-footer a:hover { color: var(--accent); }
